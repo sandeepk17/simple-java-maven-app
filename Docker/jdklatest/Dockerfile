@@ -1,8 +1,7 @@
 FROM centos:centos7
 
-# install java version
-#ARG JAVA_VERSION=12.0.1
-#ARG JAVA_BUILD=12
+ARG JAVA_VERSION=12.0.1
+ARG JAVA_BUILD=12
 
 # Update CentOS
 RUN yum update -y && \
@@ -10,34 +9,14 @@ RUN yum update -y && \
 RUN yum install -y wget git nano glibc-langpack-en
 ENV LANG en_US.UTF-8
 
-#install java8
-ENV JAVA_VERSION 8u77
-ENV BUILD_VERSION b03
-
-RUN yum -y install wget; wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/$JAVA_VERSION-$BUILD_VERSION/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-8-linux-x64.rpm && \
-    yum -y install /tmp/jdk-8-linux-x64.rpm
-
-# JDK stripping
-RUN rm -f /usr/java/jdk1.8.0_77/src.zip /usr/java/jdk1.8.0_77/javafx-src.zip
-RUN rm -rf /usr/java/jdk1.8.0_77/lib/missioncontrol/ /usr/java/jdk1.8.0_77/lib/visualvm/ /usr/java/jdk1.8.0_77/db/
-
-RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 1
-RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 1
-
-ENV JAVA_HOME /usr/java/latest
+# Install java
+RUN curl -sOL https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1%2B${JAVA_BUILD}/OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz && \
+    mkdir /usr/share/java && \
+    tar zxf OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz -C /usr/share/java && \
+    rm -rf OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz
+# Set Java home
+ENV JAVA_HOME /usr/share/java/jdk-${JAVA_VERSION}+${JAVA_BUILD}
 ENV PATH $PATH:$JAVA_HOME/bin
-
-RUN rm -f /tmp/jdk-8-linux-x64.rpm; yum -y remove wget; yum -y clean all
-
-## Install java
-#RUN curl -sOL https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1%2B${JAVA_BUILD}/OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz && \
-#    mkdir /usr/share/java && \
-#    tar zxf OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz -C /usr/share/java && \
-#    rm -rf OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz
-## Set Java home
-#ENV JAVA_HOME /usr/share/java/jdk-${JAVA_VERSION}+${JAVA_BUILD}
-#ENV PATH $PATH:$JAVA_HOME/bin
-
 # Install Maven
 RUN yum install -y wget && \
     wget --no-verbose -O /tmp/apache-maven-3.3.9.tar.gz http://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && \
