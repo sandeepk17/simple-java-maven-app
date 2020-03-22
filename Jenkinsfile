@@ -8,9 +8,9 @@ pipeline {
         // Set env variables for Pipeline
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
-        ARTIFACTORY_SERVER_ID = "artifactory"
-        ARTIFACTORY_URL = "https://artifactory.azure.dsb.dk/artifactory"
-        ARTIFACTORY_CREDENTIALS = "Artifactory"
+        ARTIFACTORY_SERVER_ID = "Artifactory1"
+        ARTIFACTORY_URL = "http://192.168.0.104:8081/artifactory"
+        ARTIFACTORY_CREDENTIALS = "admin.jfrog"
         CURRENT_BUILD_NO = "${currentBuild.number}"
         RELEASE_TAG = "${currentBuild.number}-${VERSION}"
         CURRENT_BRANCH = "${env.BRANCH_NAME}"
@@ -20,7 +20,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
         timestamps()
         disableConcurrentBuilds()
-        ansiColor('xterm')
     }
 
     stages {
