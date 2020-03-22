@@ -21,8 +21,8 @@ RUN yum -y install wget; wget --no-cookies --no-check-certificate --header "Cook
 RUN rm -f /usr/java/jdk1.8.0_241/src.zip /usr/java/jdk1.8.0_241/javafx-src.zip
 RUN rm -rf /usr/java/jdk1.8.0_241/lib/missioncontrol/ /usr/java/jdk1.8.0_241/lib/visualvm/ /usr/java/jdk1.8.0_241/db/
 
-RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 1
-RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 1
+#RUN alternatives --install /usr/bin/java java /usr/java/latest/bin/java 1
+#RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 1
 
 ENV JAVA_HOME /usr/java/latest
 ENV PATH $PATH:$JAVA_HOME/bin
