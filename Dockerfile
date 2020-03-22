@@ -47,11 +47,10 @@ ENV MAVEN_HOME=/opt/maven M2_HOME=/opt/maven
 
 RUN  wget --no-verbose -O /tmp/OctopusTools.7.3.0.linux-x64.tar.gz  https://download.octopusdeploy.com/octopus-tools/7.3.0/OctopusTools.7.3.0.linux-x64.tar.gz && \
     echo "E054882DBB2A314FF5694072DD7452BC /tmp/OctopusTools.7.3.0.linux-x64.tar.gz" | md5sum -c && \
+    chmod +x /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
     tar xzf /tmp/OctopusTools.7.3.0.linux-x64.tar.gz -C /opt/ && \
     ln -s /opt/OctopusTools.7.3.0.linux-x64 /opt/OctopusTools && \
-    ln -s /opt/OctopusTools/Octo /usr/local/bin && \
-    rm -f /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
-    yum clean all
+    ln -s /opt/OctopusTools/Octo /usr/local/bin
 ENV OCTO_HOME=/opt/OctopusTools
 
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
@@ -59,4 +58,4 @@ ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-CMD ["jshell"]
+CMD [ "/bin/bash" ]
