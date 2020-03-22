@@ -32,7 +32,7 @@ ENV MAVEN_HOME=/opt/maven M2_HOME=/opt/maven
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-tools-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-jdbc-19.3.0.0.0-1.x86_64.rpm -y
-RUN curl -sSfL https://rpm.octopus.com/octopuscli.repo -o /etc/yum.repos.d/octopuscli.repo && \
+RUN curl -sSL https://rpm.octopus.com/octopuscli.repo -o /etc/yum.repos.d/octopuscli.repo && \
     yum install octopuscli
 
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
