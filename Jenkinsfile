@@ -22,6 +22,14 @@ pipeline {
     }
 
     stages {
+        stage ('Environmental Variables') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    echo "OCTO_HOME = ${OCTO_HOME}"
+                '''
+            }
         stage('Build') {
             steps {
                 sh '''
