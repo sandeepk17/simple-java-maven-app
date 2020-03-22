@@ -49,9 +49,7 @@ RUN  wget --no-verbose -O /tmp/OctopusTools.7.3.0.linux-x64.tar.gz  https://down
     echo "E054882DBB2A314FF5694072DD7452BC /tmp/OctopusTools.7.3.0.linux-x64.tar.gz" | md5sum -c && \
     chmod +x /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
     tar xzf /tmp/OctopusTools.7.3.0.linux-x64.tar.gz -C /opt/ && \
-    tar xzf /tmp/OctopusTools.7.3.0.linux-x64.tar.gz -C /tmp/ && \
-    ln -s /opt/OctopusTools.7.3.0.linux-x64 /opt/OctopusTools && \
-    ln -s /opt/OctopusTools/Octo /usr/local/bin
+    ln -s /opt/Octo /usr/local/bin
 ENV OCTO_HOME=/opt/octo
 ENV PATH="$OCTO_HOME:$PATH"
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
