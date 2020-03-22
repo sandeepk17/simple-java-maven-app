@@ -87,9 +87,9 @@ pipeline {
         }
         stage ('Deploy to Octopus') {
             steps {
-                withCredentials([string(credentialsId: 'OctopusAPIKey', variable: 'APIKey')]) {
+                withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
                     sh """
-                        ${OCTO_HOME}/Octo push --package target/demo.0.0.1-SNAPSHOT.war --replace-existing --server https://youroctopusserver --apiKey ${APIKey}
+                        ${OCTO_HOME}/Octo push --package target/my-app-1.0-SNAPSHOT.jar --replace-existing --server https://rasmimr.octopus.app --apiKey ${APIKey}
                     """
                 }
             }
