@@ -30,6 +30,7 @@ pipeline {
                     echo "OCTO_HOME = ${OCTO_HOME}"
                 '''
             }
+        }
         stage('Build') {
             steps {
                 sh '''
