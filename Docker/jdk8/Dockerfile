@@ -61,7 +61,7 @@ RUN  wget --no-verbose -O /tmp/OctopusTools.7.3.0.linux-x64.tar.gz  https://down
     ln -s /opt/OctopusTools/Octo /usr/local/bin && \
     rm -f /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
     yum clean all
-ENV OCTO_HOME=/opt/OctopusTools
+ENV OCTO_HOME=/opt/OctopusTools/Octo
 
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 # Set Timezone

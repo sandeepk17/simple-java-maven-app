@@ -3,9 +3,6 @@ pipeline {
         // Set Build Agent as Docker file 
         dockerfile true
     }
-    tools {
-        OCTO_CLI = "${OCTO_HOME}"
-    }
     environment {
         // Set env variables for Pipeline
         IMAGE = readMavenPom().getArtifactId()
@@ -93,7 +90,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
                     sh """
-                        ${tool('OCTO_CLI')}/Octo push --package target/my-app-1.0-SNAPSHOT.jar --replace-existing --server https://rasmimr.octopus.app --apiKey ${APIKey}
+                        ${OCTO_HOME}/Octo push --package target/my-app-1.0-SNAPSHOT.jar --replace-existing --server https://rasmimr.octopus.app --apiKey ${APIKey}
                     """
                 }
             }
