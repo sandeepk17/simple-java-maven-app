@@ -3,7 +3,10 @@ pipeline {
         // Set Build Agent as Docker file 
         dockerfile true
     }
-    
+
+    tools {
+        Octopus Deploy CLI  "${OCTO_HOME}" 
+    } 
     environment {
         // Set env variables for Pipeline
         IMAGE = readMavenPom().getArtifactId()
@@ -25,6 +28,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    echo "OCTO_HOME = ${OCTO_HOME}"
+                    mvn --version 
+                '''
                 echo "${VERSION}"
                 echo "${IMAGE}"
                 echo "${CURRENT_BRANCH}"
