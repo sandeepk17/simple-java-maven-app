@@ -14,7 +14,7 @@ ENV LANG en_US.UTF-8
 ENV JAVA_VERSION 8u241
 ENV BUILD_VERSION b07
 
-RUN yum -y install wget; wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn/java/jdk/$JAVA_VERSION-$BUILD_VERSION/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-8-linux-x64.rpm && \
+RUN yum -y install wget; wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn/java/jdk/$JAVA_VERSION-$BUILD_VERSION/1f5b5a70bf22433b84d0e960903adac8/jdk-$JAVA_VERSION-linux-x64.rpm" -O /tmp/jdk-8-linux-x64.rpm && \
     yum -y install /tmp/jdk-8-linux-x64.rpm
 
 # JDK stripping
