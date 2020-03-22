@@ -9,17 +9,6 @@ RUN yum update -y && \
 RUN yum install -y wget git nano glibc-langpack-en
 ENV LANG en_US.UTF-8
 
-RUN \
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7                 && \
-    yum -y updateinfo                                                  && \
-    yum -y install \
-    yum-utils \
-    epel-release \
-    http://yumrepo.eea.europa.eu/centos/eea-release-1-0.1.noarch.rpm && \
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7                 && \
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EEA                    && \
-    yum clean all
-
 # Install java
 RUN curl -sOL https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.1%2B${JAVA_BUILD}/OpenJDK12U-jdk_x64_linux_hotspot_${JAVA_VERSION}_${JAVA_BUILD}.tar.gz && \
     mkdir /usr/share/java && \
@@ -43,8 +32,7 @@ ENV MAVEN_HOME=/opt/maven M2_HOME=/opt/maven
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-tools-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-jdbc-19.3.0.0.0-1.x86_64.rpm -y
-RUN curl -sSfL https://rpm.octopus.com/octopuscli.repo -o /etc/yum.repos.d/octopuscli.repo && \
-    yum install octopuscli
+RUN yum install octopuscli
 
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 # Set Timezone
