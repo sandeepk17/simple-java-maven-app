@@ -3,6 +3,9 @@ pipeline {
         // Set Build Agent as Docker file 
         dockerfile true
     }
+    tools {
+        OCTO_CLI = "${OCTO_HOME}"
+    }
     environment {
         // Set env variables for Pipeline
         IMAGE = readMavenPom().getArtifactId()
@@ -14,9 +17,7 @@ pipeline {
         RELEASE_TAG = "${currentBuild.number}-${VERSION}"
         CURRENT_BRANCH = "${env.BRANCH_NAME}"
     }
-    tools {
-        OCTO_CLI = "${OCTO_HOME}"
-    }
+
     options {
         // Set Jenkins Pipeline options
         buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
