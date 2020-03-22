@@ -49,7 +49,7 @@ RUN  wget --no-verbose -O /tmp/OctopusTools.7.3.0.linux-x64.tar.gz  https://down
     echo "E054882DBB2A314FF5694072DD7452BC /tmp/OctopusTools.7.3.0.linux-x64.tar.gz" | md5sum -c && \
     chmod +x /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
     tar xzf /tmp/OctopusTools.7.3.0.linux-x64.tar.gz -C /opt/ && \
-    ln -s /opt/Octo /usr/local/bin
+    ln -s /opt/octo /usr/local/bin
 ENV OCTO_HOME=/opt/octo
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 # Set Timezone
