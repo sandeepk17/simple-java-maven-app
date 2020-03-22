@@ -32,7 +32,15 @@ ENV MAVEN_HOME=/opt/maven M2_HOME=/opt/maven
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-tools-19.3.0.0.0-1.x86_64.rpm -y
 # RUN yum install https://download.oracle.com/otn_software/linux/instantclient/193000/oracle-instantclient19.3-jdbc-19.3.0.0.0-1.x86_64.rpm -y
-RUN yum install octopuscli
+
+RUN  wget --no-verbose -O /tmp/OctopusTools.7.3.0.linux-x64.tar.gz  https://download.octopusdeploy.com/octopus-tools/7.3.0/OctopusTools.7.3.0.linux-x64.tar.gz && \
+    echo "E054882DBB2A314FF5694072DD7452BC /tmp/OctopusTools.7.3.0.linux-x64.tar.gz" | md5sum -c && \
+    tar xzf /tmp/OctopusTools.7.3.0.linux-x64.tar.gz -C /opt/ && \
+    ln -s /opt/OctopusTools.7.3.0.linux-x64 /opt/OctopusTools && \
+    ln -s /opt/OctopusTools/Octo /usr/local/bin && \
+    rm -f /tmp/OctopusTools.7.3.0.linux-x64.tar.gz && \
+    yum clean all
+ENV OCTO_HOME=/opt/OctopusTools
 
 ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 # Set Timezone
