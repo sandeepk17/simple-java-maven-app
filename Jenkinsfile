@@ -77,20 +77,4 @@ pipeline {
             }
         }
     }
-    // Cleanup Workspace
-    post { 
-        always {
-            echo 'One way or another, I have finished'
-            deleteDir()
-        }
-        success {
-            echo 'I succeeeded!'
-        }
-        unstable {
-            echo 'I am unstable :/'
-        }
-        failure {
-            echo 'I failed :('
-        }
-    }
 }
