@@ -47,6 +47,4 @@ ENV PATH="/usr/lib/oracle/19.3/client64/bin:${PATH}"
 ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY ./pom.xml /var/temp/pom.xml
-COPY ./settings.xml /var/temp/settings.xml
 CMD ["jshell"]
