@@ -3,10 +3,6 @@ pipeline {
         // Set Build Agent as Docker file 
         dockerfile true
     }
-
-    tools {
-        Octopus Deploy CLI  "${OCTO_HOME}" 
-    } 
     environment {
         // Set env variables for Pipeline
         IMAGE = readMavenPom().getArtifactId()
