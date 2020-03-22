@@ -15,7 +15,7 @@ pipeline {
         CURRENT_BRANCH = "${env.BRANCH_NAME}"
     }
     tools {
-        OCTO_CLI '${OCTO_HOME}'
+        OCTO_CLI = "${OCTO_HOME}"
     }
     options {
         // Set Jenkins Pipeline options
