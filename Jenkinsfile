@@ -13,6 +13,7 @@ pipeline {
         CURRENT_BUILD_NO = "${currentBuild.number}"
         RELEASE_TAG = "${currentBuild.number}-${VERSION}"
         CURRENT_BRANCH = "${env.BRANCH_NAME}"
+        OCTOHOME = "${OCTO_HOME}"
     }
 
     options {
@@ -27,6 +28,7 @@ pipeline {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
+                    echo "${OCTOHOME}"
                     echo "M2_HOME = ${M2_HOME}"
                     echo "OCTO_HOME = ${OCTO_HOME}"
                 '''
