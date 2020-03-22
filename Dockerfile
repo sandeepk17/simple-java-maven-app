@@ -3,6 +3,9 @@ FROM centos:centos7
 # install java version
 #ARG JAVA_VERSION=12.0.1
 #ARG JAVA_BUILD=12
+# install java version
+ARG JAVA_VERSION=8u241
+ARG JAVA_BUILD=b07
 
 # Update CentOS
 RUN yum update -y && \
