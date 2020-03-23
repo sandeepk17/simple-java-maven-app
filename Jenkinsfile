@@ -21,13 +21,6 @@ pipeline {
                 OCTOHOME = "${OCTO_HOME}"
             }
 
-            options {
-                // Set Jenkins Pipeline options
-                buildDiscarder(logRotator(numToKeepStr: '30', artifactNumToKeepStr: '30'))
-                timestamps()
-                disableConcurrentBuilds()
-            }
-
             stages {
                 stage ('Environmental Variables') {
                     steps {
