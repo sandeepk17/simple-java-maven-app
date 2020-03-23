@@ -89,9 +89,9 @@ pipeline {
                 stage ('Deploy to Octopus') {
                     steps {
                         echo " Deploy to artifactory"
-                        //withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
-                        //    sh 'octo push --package target/my-app-1.0-SNAPSHOT.jar --replace-existing --server https://rasmimr.octopus.app --apiKey ${APIKey}'
-                        //}
+                        withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
+                            sh 'octo help}'
+                        }
                     }
                 }
             }
