@@ -67,6 +67,11 @@ pipeline {
         }
 
         stage('Smoke test') {
+            agent {
+                docker {
+                    image "sdkman:local" 
+                }
+            }
             steps{        
                 echo "Smoke Test stage"
             }
