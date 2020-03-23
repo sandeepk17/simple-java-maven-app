@@ -90,7 +90,7 @@ pipeline {
                     steps {
                         echo " Deploy to artifactory"
                         withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
-                            sh 'octo help}'
+                            sh 'octo help'
                         }
                     }
                 }
