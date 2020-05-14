@@ -40,7 +40,7 @@ pipeline {
                 echo "${IMAGE}"
                 echo "${CURRENT_BRANCH}"
                 echo "$WORKSPACE"
-                sh 'mvn -B -DskipTests clean package -s settings.xml'
+                //sh 'mvn -B -DskipTests clean package -s settings.xml'
             }
         }
         stage('Test') {
