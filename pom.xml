@@ -19,12 +19,12 @@
       <repository>
           <id>central</id>
           <name>sandeeps-MacBook-Pro-2.local-releases</name>
-          <url>http://192.168.0.104:8081/artifactory/ransomquotes</url>
+          <url>http://192.168.0.101:8081/artifactory/ransomquotes</url>
       </repository>
       <snapshotRepository>
           <id>snapshots</id>
           <name>sandeeps-MacBook-Pro-2.local-snapshots</name>
-          <url>http://192.168.0.104:8081/artifactory/ransomquotes</url>
+          <url>http://192.168.0.101:8081/artifactory/ransomquotes</url>
       </snapshotRepository>
   </distributionManagement>
   <build>

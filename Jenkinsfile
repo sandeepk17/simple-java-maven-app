@@ -9,7 +9,7 @@ pipeline {
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
         ARTIFACTORY_SERVER_ID = "Artifactory1"
-        ARTIFACTORY_URL = "http://192.168.0.104:8081/artifactory"
+        ARTIFACTORY_URL = "http://192.168.0.101:8081/artifactory"
         ARTIFACTORY_CREDENTIALS = "admin.jfrog"
         CURRENT_BUILD_NO = "${currentBuild.number}"
         RELEASE_TAG = "${currentBuild.number}-${VERSION}"
