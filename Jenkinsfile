@@ -61,14 +61,8 @@ pipeline {
         }
 
         stage('Smoke test') {
-                                steps{ 
-                    echo "Smoke Test stage"
-            }
-        }
-
-        stage('Integration Test') {
-            steps{        
-                echo " Deploy to artifactory"
+            steps{ 
+                echo "Smoke Test stage"
             }
         }
 
@@ -77,17 +71,14 @@ pipeline {
                 echo " Deploy to artifactory"
             }
         }
-        stage('Deliver') { 
-            steps {
-                sh './jenkins/scripts/deliver.sh' 
-            }
-        }
+
         stage ('Deploy to Octopus') {
             steps {
                 echo " Deploy to artifactory"
                 withCredentials([string(credentialsId: 'OctopusAPIkey', variable: 'APIKey')]) {
                     sh 'octo help'
-                    sh 'octo pack --id="OctoWeb" --version="1.0.0" --basePath="$WORKSPACE/target" --outFolder="$WORKSPACE"'
+                    sh 'octo pack --id="DK" --version="1.0.0" --basePath="$WORKSPACE/distDK" --outFolder="$WORKSPACE"'
+                    sh 'octo pack --id="UK" --version="1.0.0" --basePath="$WORKSPACE/distUK" --outFolder="$WORKSPACE"'
                 }
             }
         }
